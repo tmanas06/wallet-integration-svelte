@@ -1,148 +1,125 @@
 <script lang="ts">
-/** @type {import('./$types').ActionData} */
-export let form;
+  /** @type {import('./$types').ActionData} */
+  export let form;
 </script>
 
-<div
-  class="mt-10 pt-10 w-full max-w-xl p-12 mx-auto rounded-lg shadow-xl dark:bg-white/10 bg-white/30 ring-1 ring-gray-900/5 backdrop-blur-lg"
->
+<style>
+  .form-container {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 2rem;
+    border-radius: 0.5rem;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    background-color: #333; /* Dark background */
+    color: #fff; /* White text */
+  }
+
+  .form-title {
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin-bottom: 1rem;
+    color: #fff; /* White text */
+  }
+
+  .form-field {
+    margin-bottom: 1rem;
+  }
+
+  .form-label {
+    display: block;
+    font-size: 0.875rem;
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+    color: #ccc; /* Light gray text */
+  }
+
+  .form-input {
+    width: 100%;
+    padding: 0.75rem;
+    border: 1px solid #555; /* Darker border */
+    border-radius: 0.25rem;
+    font-size: 1rem;
+    color: #fff; /* White text */
+    background-color: #444; /* Darker input background */
+  }
+
+  .form-button {
+    display: block;
+    width: 100%;
+    padding: 0.75rem;
+    background-color: #007bff;
+    color: #ffffff;
+    font-size: 1rem;
+    font-weight: bold;
+    border: none;
+    border-radius: 0.25rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+
+  .form-button:hover {
+    background-color: #0056b3;
+  }
+
+  .form-message {
+    margin-top: 1rem;
+    font-size: 1rem;
+    color: #28a745;
+  }
+
+  .form-error {
+    margin-top: 1rem;
+    font-size: 1rem;
+    color: #dc3545;
+  }
+</style>
+
+<div class="form-container">
+  <h2 class="form-title">Login</h2>
   <form method="POST" action="?/login">
-    <div class="flex flex-wrap -mx-3 mb-2">
-        <div class="w-full md:w-1/3 px-3 mb-6 md:mb-0">
-            <label
-              class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
-              for="email"
-            >
-              Email
-            </label>
-            <input
-              class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
-              id="email"
-              type="text"
-              placeholder="Enter email"
-              name="email"
-            />
-        </div>
-        <div class="w-full md:w-1/3 px-3 mb-6 md:mb-0">
-        <label
-          class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
-          for="password"
-        >
-          Password
-        </label>
-        <input
-          class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
-          id="password"
-          type="text"
-          placeholder="Enter password"
-          name="password"
-        />
-    
-      </div>
-      <!-- <div class="w-full md:w-1/3 px-3 mb-6 md:mb-0">
-            <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-state">
-              Email
-            </label>
-          </div> -->
-      <button
-        type="submit"
-        class="bg-yellow-500 hover:bg-blue-700 text-white font-bold mt-5 ml-2 px-2 rounded "
-      >
-        Login In
-      </button>
+    <div class="form-field">
+      <label class="form-label" for="email">Email</label>
+      <input class="form-input" id="email" type="email" name="email" placeholder="Enter email" />
     </div>
+    <div class="form-field">
+      <label class="form-label" for="password">Password</label>
+      <input class="form-input" id="password" type="password" name="password" placeholder="Enter password" />
+    </div>
+    <button type="submit" class="form-button">Log In</button>
   </form>
   {#if form?.success}
-    <!-- this message is ephemeral; it exists because the page was rendered in
-		   response to a form submission. it will vanish if the user reloads -->
-    <p class="pt-2">Logged In. Your balance is {form?.balance}!</p>
+    <p class="form-message">Logged In. Your balance is {form.balance}!</p>
+  {/if}
+  {#if form?.error}
+    <p class="form-error">Error: {form.error}</p>
   {/if}
 </div>
 
-<div
-  class="m-20 pt-10 w-full max-w-xl p-12 mx-auto rounded-lg shadow-xl dark:bg-white/10 bg-white/30 ring-1 ring-gray-900/5 backdrop-blur-lg"
->
+<div class="form-container mt-10">
+  <h2 class="form-title">Pay</h2>
   <form method="POST" action="?/pay">
-    <div class="flex flex-wrap -mx-3 mb-2">
-        <div class="w-full md:w-1/3 px-3 mb-6 md:mb-0">
-            <label
-              class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
-              for="email"
-            >
-              Email
-            </label>
-            <input
-              class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
-              id="email"
-              type="text"
-              placeholder="Enter email"
-              name="email"
-            />
-        </div>
-        <div class="w-full md:w-1/3 px-3 mb-6 md:mb-0">
-        <label
-          class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
-          for="password"
-        >
-          Password
-        </label>
-        <input
-          class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
-          id="password"
-          type="text"
-          placeholder="Enter password"
-          name="password"
-        />
-    
-      </div>
-      <!-- <div class="w-full md:w-1/3 px-3 mb-6 md:mb-0">
-            <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-state">
-              Email
-            </label>
-          </div> -->
-          <div class="w-full md:w-1/3 px-3 mb-6 md:mb-0">
-            <label
-              class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
-              for="paymail"
-            >
-              Paymail
-            </label>
-            <input
-              class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
-              id="paymail"
-              type="text"
-              placeholder="Enter paymail"
-              name="paymail"
-            />
-        </div>
-        <div class="w-full md:w-1/3 px-3 mb-6 md:mb-0">
-        <label
-          class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
-          for="amount"
-        >
-          amount
-        </label>
-        <input
-          class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
-          id="amount"
-          type="text"
-          placeholder="Enter amount"
-          name="amount"
-        />
-    
-      </div>
-
-      <button
-        type="submit"
-        class="bg-yellow-500 hover:bg-blue-700 text-white font-bold mt-5 ml-2 px-2 rounded "
-      >
-        Pay
-      </button>
+    <div class="form-field">
+      <label class="form-label" for="email">Email</label>
+      <input class="form-input" id="email" type="email" name="email" placeholder="Enter email" />
     </div>
+    <div class="form-field">
+      <label class="form-label" for="password">Password</label>
+      <input class="form-input" id="password" type="password" name="password" placeholder="Enter password" />
+    </div>
+    <div class="form-field">
+      <label class="form-label" for="paymail">Paymail</label>
+      <input class="form-input" id="paymail" type="text" name="paymail" placeholder="Enter paymail" />
+    </div>
+    <div class="form-field">
+      <label class="form-label" for="amount">Amount</label>
+      <input class="form-input" id="amount" type="number" name="amount" placeholder="Enter amount" />
+    </div>
+    <button type="submit" class="form-button">Pay</button>
   </form>
   {#if form?.success}
-    <!-- this message is ephemeral; it exists because the page was rendered in
-		   response to a form submission. it will vanish if the user reloads -->
-    <p class="pt-2">The payment was successful. Here is your <a href="https://whatsonchain.com/tx/{form?.payment}">transaction</a>!</p>
+    <p class="form-message">The payment was successful. Here is your <a href="https://whatsonchain.com/tx/{form.payment}" target="_blank">transaction</a>!</p>
+  {/if}
+  {#if form?.error}
+    <p class="form-error">Error: {form.error}</p>
   {/if}
 </div>
