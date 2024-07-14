@@ -51,6 +51,16 @@ vercel link
 then add the database to the vercel project
 ![image](https://github.com/user-attachments/assets/13718623-bc9f-4e07-87ca-2e766be24cdf)
 
+After you've enabled the database in storage, you can now do the below code in the project teminal
+```bash
+vercel pull
+```
+
+with this command you can automatically pull the enivromantal variables in your project and then paste the .exe file in the project folder
+![image](https://github.com/user-attachments/assets/162ca6aa-7aac-40a6-8497-c56b3ed2a8d3)
+
+
+
 
 You can preview the production build with `npm run preview`.
 
