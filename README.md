@@ -33,6 +33,25 @@ To create a production version of your app:
 npm run build
 ```
 
+## After cloning to run this code 
+### first
+```bash
+bun i
+```
+### to run
+```bash
+bun run dev
+```
+
+## Note
+when pressed on profiles it will give error 500, because you didn't deploy it on vercel . You can do this by simpley using the below command
+```bash
+vercel link
+```
+then add the database to the vercel project
+![image](https://github.com/user-attachments/assets/13718623-bc9f-4e07-87ca-2e766be24cdf)
+
+
 You can preview the production build with `npm run preview`.
 
 > To deploy your app, you may need to install an [adapter](https://kit.svelte.dev/docs/adapters) for your target environment.
